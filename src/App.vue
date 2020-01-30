@@ -1,18 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <svg-icon
+      name="logo"
+      :size="100"
+      color="green"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapActions } from 'vuex'
+import SvgIcon from './components/SvgIcon.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    SvgIcon,
+  },
+  methods: {
+    ...mapActions(['fetchCatFact']),
+  },
+  mounted() {
+    this.fetchCatFact();
+  },
 }
 </script>
 
