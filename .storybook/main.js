@@ -45,7 +45,7 @@ module.exports = {
       ]
     });
 
-    All SCSS except globals use css modules
+    // All SCSS except globals use css modules
     config.module.rules.push({
       test: /\.css$/,
       oneOf: [
