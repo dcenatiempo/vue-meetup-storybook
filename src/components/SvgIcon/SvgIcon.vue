@@ -12,7 +12,7 @@ export default {
   props: {
     name: {
       type: String,
-      default: 'logo'
+      default: 'question'
     },
     size: {
       type: Number,
