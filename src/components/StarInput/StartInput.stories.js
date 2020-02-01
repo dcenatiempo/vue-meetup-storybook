@@ -1,5 +1,6 @@
 import { withKnobs, boolean, number, select, color } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import centered from '@storybook/addon-centered/vue';
 // import mdx from './StarInput.mdx';
 
 // Load component to use in storybook
@@ -8,7 +9,7 @@ import StarInput from './StarInput.vue';
 export default {
 	title: 'Star Input',
   component: StarInput,
-	decorators: [withKnobs],
+	decorators: [withKnobs, centered],
 	parameters: {
 		componentSubtitle: 'this is the subtitle',
 		// docs: {

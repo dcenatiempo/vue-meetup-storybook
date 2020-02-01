@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { withKnobs, select, number, color } from '@storybook/addon-knobs';
+import centered from '@storybook/addon-centered/vue';
 
 import SvgIcon from './SvgIcon';
 
@@ -8,24 +9,27 @@ const iconList = ['camera', 'check', 'chevron', 'delete', 'location-marker', 'lo
 export default {
   title: '<SvgIcon>',
   component: SvgIcon,
-  decorators: [withKnobs],
 };
 
-export const allIcons = () => ({
+export const AllIcons = () => ({
   components: { SvgIcon },
   data() {
     return {
       iconList,
     }
   },
-  template: `<div style="display: grid; grid-template-columns: max-content max-content; grid-gap: 5px;">
-    <template v-for="icon in iconList">
-      <span>{{icon}}:</span>
+  template: `<div style="display: flex; flex-flow: row wrap;">
+    <div v-for="icon in iconList" style="display: flex; flex-flow: column; align-items: center; margin: 25px">
       <svg-icon :name="icon" :size="30"/>
-    </template>
+      <span style="margin-top: 5px;">{{icon}}</span>
+    </div>
   </div>`,
   methods: { action: action('clicked') },
 });
+
+AllIcons.story = {
+  decorators: [withKnobs],
+};
 
 export const WithKnobs = () => ({
   components: { SvgIcon },
@@ -60,6 +64,7 @@ export const WithKnobs = () => ({
 });
 
 WithKnobs.story = {
+  decorators: [centered, withKnobs],
   parameters: { 
     docs: { 
       disable: true,
