@@ -4,7 +4,7 @@
 			v-for="n in max"
 			:key="n"
 			:disabled="disabled"
-			:class="{ editMode: $style.isEditMode }"
+			:class="isEditMode ? $style.editMode : ''"
 			:style="`height: ${iconSize}; width: ${iconSize};`"
 			@click="onChange(n)"
 		>
@@ -27,6 +27,10 @@ export default {
     SvgIcon,
   },
 	props: {
+		color: {
+			type: String,
+			default: '#ebaa41',
+		},
 		value: {
 			type: Number,
 			default: 2,
@@ -49,7 +53,7 @@ export default {
 			default: false,
 		},
 		size: {
-			type: String,
+			type: [String, Number],
 			default: 'small',
 		},
 		disabled: {
@@ -64,6 +68,7 @@ export default {
 			return boundedValue;
 		},
 		iconSize() {
+			if ('number' === typeof this.size) return this.size;
 			if (this.size === 'small') return 14;
 			return 20;
 		},
@@ -86,7 +91,7 @@ export default {
 		getColor(n) {
 			const normalizedValue = this.getNormalizedValue(this.boundedValue);
 			return n <= normalizedValue
-				? '#ebaa41'
+				? this.color
 				: 'rgba(150, 150, 150, .5)';
 		},
 	},
@@ -106,6 +111,7 @@ export default {
 		margin: 0 2px;
 		box-sizing: border-box;
 		border-radius: 50%;
+		cursor: pointer;
 
 		&:focus {
 			outline: none;
@@ -114,6 +120,10 @@ export default {
 
 		&:not(.editMode) {
 			cursor: inherit;
+			&:focus {
+				outline: none;
+				box-shadow: none;
+			}
 		}
 
 		&:disabled {

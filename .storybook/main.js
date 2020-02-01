@@ -8,10 +8,7 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/addon-knobs/register',
-    '@storybook/addon-storysource',
-    '@storybook/addon-docs',
     '@storybook/addon-viewport/register',
-    '@storybook/addon-backgrounds/register',
   ],
   webpackFinal: async (config, { configType }) => {
     // console.dir(config, { depth: null }) 

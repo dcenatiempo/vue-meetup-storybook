@@ -52,16 +52,17 @@ Here are the main differences:
 - Added a webpackFinal prop to the main.js file to account for more complex components
 
 ## Addons
-(branch 3)
+(branch 3.1)
+- viewport
+- background (no documentation for Vue)
+
+(branch 3.2)
 - knobs
 - actions
 - links
 
 - docs
 - storysource
-
-- viewport
-- background
 
 ## Custom Decorators (Vuex provider)
 (branch 4)

@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs, boolean, number } from '@storybook/addon-knobs';
+import { withKnobs, boolean, number, select, color } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 // Load decorators
 // import darkMode from './decorators/darkMode';
-// import centered from './decorators/centered';
 
 // Load component to use in storybook
 import StarInput from './StarInput.vue';
@@ -12,24 +12,6 @@ import StarInput from './StarInput.vue';
 // Create stories
 storiesOf('inputs.StarInput', module)
 	.addDecorator(withKnobs)
-	// .addDecorator(centered)
-	// .addDecorator(darkMode)
-	.add('display mode', () => ({
-		components: { StarInput },
-		props: {
-			value: { default: number('value', 2) },
-			min: { default: number('min', 1) },
-			max: { default: number('max', 3) },
-			isInverted: { default: boolean('isInverted', true) },
-		},
-		template: `
-			<star-input
-				:value="value"
-				:min="min"
-				:max="max"
-				:isInverted="isInverted"
-			/>`,
-	}))
 	.add('Edit mode', () => ({
 		components: { StarInput },
 		data() {
@@ -42,14 +24,25 @@ storiesOf('inputs.StarInput', module)
 			max: { default: number('max', 3) },
 			isInverted: { default: boolean('isInverted', true) },
 			disabled: { default: boolean('disabled', false) },
+			isEditMode: { default: boolean('isEditMode', false) },
+			size: { default: select('size', ['small', 'large', 30, 40, 50, 60], 'large')},
+			color: { default: color('color', '#ebaa41')}
+		},
+		methods: {
+			onInput(val) {
+				action(`@input`)(val)
+			}
 		},
 		template: `
 			<star-input
 				v-model="priority"
 				:min="min"
 				:max="max"
-				isEditMode
+				:isEditMode="isEditMode"
 				:isInverted="isInverted"
 				:disabled="disabled"
+				@input="onInput"
+				:size="size"
+				:color="color"
 			/>`,
 	}));
