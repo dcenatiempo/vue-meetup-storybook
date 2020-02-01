@@ -1,8 +1,9 @@
 import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
 import { withKnobs, select, number, color } from '@storybook/addon-knobs';
 
 import SvgIcon from './SvgIcon';
+
+const iconList = ['camera', 'check', 'chevron', 'delete', 'location-marker', 'location', 'logo', 'minus', 'person', 'photos', 'plus', 'question', 'search', 'vehicle', 'star'];
 
 export default {
   title: '<SvgIcon>',
@@ -10,17 +11,32 @@ export default {
   decorators: [withKnobs],
 };
 
-export const defaultProps = () => ({
+export const allIcons = () => ({
   components: { SvgIcon },
-  template: `<svg-icon/>`,
+  data() {
+    return {
+      iconList,
+    }
+  },
+  template: `<div style="display: grid; grid-template-columns: max-content max-content; grid-gap: 5px;">
+    <template v-for="icon in iconList">
+      <span>{{icon}}:</span>
+      <svg-icon :name="icon" :size="30"/>
+    </template>
+  </div>`,
   methods: { action: action('clicked') },
 });
 
-export const withProps = () => ({
+export const WithKnobs = () => ({
   components: { SvgIcon },
+  data() {
+    return {
+      iconList,
+    }
+  },
   props: {
     name: {
-      default: select('name', ['camera', 'check', 'chevron', 'delete', 'location-marker', 'location', 'logo', 'minus', 'person', 'photos', 'plus', 'question', 'search', 'vehicle', 'star'], 'plus'),
+      default: select('name', iconList, 'plus'),
     },
     size: {
       default: number('size', 30, {
@@ -42,3 +58,11 @@ export const withProps = () => ({
   />`,
   methods: { action: action('clicked') },
 });
+
+WithKnobs.story = {
+  parameters: { 
+    docs: { 
+      disable: true,
+    },
+  },
+};

@@ -20,6 +20,9 @@
 <script>
 import SvgIcon from '@/components/SvgIcon/SvgIcon';
 
+/**
+ * Use `StarInput` as a simple numerical input represented by a familiar star rating.
+ */
 export default {
 	name: 'StarInput',
   inheritAttrs: false,
@@ -46,11 +49,11 @@ export default {
 		isInverted: {
 			// 3 stars == priority 1, 1 star == priority 3
 			type: Boolean,
-			default: true,
+			default: false,
 		},
 		isEditMode: {
 			type: Boolean,
-			default: false,
+			default: true,
 		},
 		size: {
 			type: [String, Number],

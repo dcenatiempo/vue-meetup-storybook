@@ -3,12 +3,34 @@ const srcPath = path.resolve(__dirname, '../src');
 console.log(srcPath)
 
 module.exports = {
-  stories: ['../src/**/*.stories.js'],
+  stories: ['../src/**/*.stories.(js|mdx)'],
+  presets: {
+    name: "@storybook/addon-docs/vue/preset",
+    options: {
+      configureJSX: true
+    },
+  },
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/addon-knobs/register',
     '@storybook/addon-viewport/register',
+    '@storybook/addon-storysource',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        babelOptions: {
+          presets: [
+            [
+              '@vue/cli-plugin-babel/preset',
+              {
+                jsx: false
+              }
+            ]
+          ]
+        }
+      }
+    },
   ],
   webpackFinal: async (config, { configType }) => {
     // console.dir(config, { depth: null }) 

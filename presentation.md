@@ -62,9 +62,10 @@ Star Input Component
 - knobs
 - actions
 
-
-- docs
+(branch 3.3)
 - storysource
+- docs
+  - Does not work with knobs
 
 - background (no documentation for Vue)
 - links
