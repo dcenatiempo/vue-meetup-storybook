@@ -26,10 +26,22 @@ export default {
   computed: {
     svg() { return require(`!!html-loader!@/assets/svg/${this.name}.svg`)},
   },
+  methods: {
+    prepareSvg() {
+      this.$nextTick(() => {
+        this.$el.firstChild.classList.add('svg-icon');
+        this.$el.firstChild.removeAttribute('height');
+        this.$el.firstChild.removeAttribute('width');
+      });
+    }
+  },
   mounted () {
-    this.$el.firstChild.classList.add('svg-icon');
-    this.$el.firstChild.removeAttribute('height');
-    this.$el.firstChild.removeAttribute('width');
+    this.prepareSvg();
+  },
+  watch: {
+    name(val) {
+      this.prepareSvg();
+    },
   },
 }
 </script>

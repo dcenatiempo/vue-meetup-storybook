@@ -53,16 +53,22 @@ Here are the main differences:
 
 ## Addons
 (branch 3.1)
+Modal Component
 - viewport
-- background (no documentation for Vue)
 
 (branch 3.2)
+SVG Icon Component
+Star Input Component
 - knobs
 - actions
-- links
+
 
 - docs
 - storysource
+
+- background (no documentation for Vue)
+- links
+
 
 ## Custom Decorators (Vuex provider)
 (branch 4)

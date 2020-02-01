@@ -23,11 +23,11 @@ export const withProps = () => ({
       default: select('name', ['camera', 'check', 'chevron', 'delete', 'location-marker', 'location', 'logo', 'minus', 'person', 'photos', 'plus', 'question', 'search', 'vehicle', 'star'], 'plus'),
     },
     size: {
-      default: number('number', 30, {
+      default: number('size', 30, {
         range: true,
         min: 5,
         max: 200,
-        step: 1,
+        step: 5,
       }),
     },
     color: {
