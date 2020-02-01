@@ -1,10 +1,10 @@
 <template>
-	<div :class="container">
+	<div :class="$style.container">
 		<button
 			v-for="n in max"
 			:key="n"
 			:disabled="disabled"
-			:class="{ editMode: isEditMode }"
+			:class="{ editMode: $style.isEditMode }"
 			:style="`height: ${iconSize}; width: ${iconSize};`"
 			@click="onChange(n)"
 		>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import SvgIcon from '@/components/StarInput/StarInput';
+import SvgIcon from '@/components/SvgIcon/SvgIcon';
 
 export default {
 	name: 'StarInput',
@@ -93,7 +93,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
 .container {
 	display: flex;
 	flex-flow: row;
@@ -105,6 +105,12 @@ export default {
 		font-size: 0;
 		margin: 0 2px;
 		box-sizing: border-box;
+		border-radius: 50%;
+
+		&:focus {
+			outline: none;
+			box-shadow: 0 0 3pt 2pt rgba(83, 165, 254, 0.5), rgba(83, 165, 254, 0.5) 0px 0px 3px inset;
+		}
 
 		&:not(.editMode) {
 			cursor: inherit;
