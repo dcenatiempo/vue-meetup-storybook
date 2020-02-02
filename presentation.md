@@ -65,10 +65,7 @@ Star Input Component
 (branch 3.3)
 - storysource
 - docs
-  - Does not work with knobs
-
-- background (no documentation for Vue)
-- links
+  - https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/docspage.md#docspage-slots
 
 
 ## Custom Decorators (Vuex provider)

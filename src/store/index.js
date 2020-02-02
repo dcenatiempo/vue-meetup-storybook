@@ -7,9 +7,13 @@ const corsProxy = 'https://cors-anywhere.herokuapp.com/';
 
 export default new Vuex.Store({
   state: {
-    facts: [],
+    facts: [
+      { fact: 'I am cool', id: 1 },
+      { fact: 'You are cool', id: 2 },
+    ],
   },
   getters: {
+    allFacts: state => state.facts,
     hairFacts: state => state.facts.filter(item => item.text.includes('hair')),
     dogFacts: state => state.facts.filter(item => item.text.includes('dog')),
   },
