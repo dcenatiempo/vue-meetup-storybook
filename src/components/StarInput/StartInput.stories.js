@@ -21,6 +21,7 @@ storiesOf('inputs.StarInput', module)
 				:min="min"
 				:max="max"
 				:isInverted="isInverted"
+				:isEditMode="false"
 			/>`,
 	}))
 	.add('Edit mode', () => ({
