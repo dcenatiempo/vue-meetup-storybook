@@ -22,7 +22,11 @@ export const WithProps = () => ({
 	components: { StarInput },
 		data() {
 			return {
-				priority: 1,
+				value: 2,
+				min: 1,
+				max: 3,
+				isInverted: true,
+				disabled: false,
 			};
 		},
 		props: {
@@ -41,7 +45,7 @@ export const WithProps = () => ({
 		},
 		template: `
 			<star-input
-				v-model="priority"
+				v-model="value"
 				:min="min"
 				:max="max"
 				:isEditMode="isEditMode"

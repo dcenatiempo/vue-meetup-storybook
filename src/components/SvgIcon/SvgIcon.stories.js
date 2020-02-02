@@ -60,7 +60,7 @@ export const WithKnobs = () => ({
     :size="size"
     :color="color"
   />`,
-  methods: { action: action('clicked') },
+
 });
 
 WithKnobs.story = {
